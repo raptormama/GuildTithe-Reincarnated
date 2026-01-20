@@ -1,6 +1,6 @@
 ﻿--[[ ruRU.lua -- Russian translations -- переводы на русский язык]]
 
--- Make a localization table if it's not there:
+-- Translator ZamestoTV
 if not GTLocale then
 	GTLocale = {}
 end
@@ -8,52 +8,52 @@ end
 
 function GTLocale.Get_ruRU_Strings()
 	local L = {}
-	-- L["ChatArgNotFound"] = "§b\"%s\"§r isn't a valid argument for §b\"%s\"§r."
--- L["ChatAutoDepositDisabled"] = "Automatic deposits are disabled."
--- L["ChatCommandNotFound"] = "§b\"%s\"§r was not found. §b/gt help§r shows the commands list."
--- L["ChatDepositTitheAmount"] = "Automatically deposited %s."
--- L["ChatHelpLine1"] = "=== Version §b%s§r - Help ==="
--- L["ChatHelpLine10"] = "total -- Show the total amount you've tithed."
--- L["ChatHelpLine2"] = "Arguments in brackets are optional. Commands separated by slashes are interchangeable."
--- L["ChatHelpLine3"] = "options/config -- Open the options frame."
--- L["ChatHelpLine4"] = "reset (tithe) -- reset the current tithe."
--- L["ChatHelpLine5"] = "reset pos -- Reset the Mini-Frame's position."
--- L["ChatHelpLine6"] = "reset config -- Reset this character's config."
--- L["ChatHelpLine7"] = "current/tithe -- Show your current outstanding tithe."
--- L["ChatHelpLine8"] = "mini -- Toggle the Mini-frame."
--- L["ChatHelpLine9"] = "mini lock -- Lock or unlock the Mini-frame."
--- L["ChatMiniFrameLock"] = "Mini-Frame locked."
--- L["ChatMiniFrameUnlock"] = "Mini-frame unlocked."
--- L["ChatNotEnoughFunds"] = "You don't have enough money to do that!"
--- L["ChatNothingToDeposit"] = "There's nothing to deposit!"
--- L["ChatNoValidDeposits"] = "No vaild windows are open for depositing!"
--- L["ChatOutstandingTithe"] = "Current Tithe - %s"
--- L["ChatSpammyCollectedAmount"] = "%s collected from §b%s§r"
--- L["ChatSpammyNotCollectingSource"] = "Not collecting tithes from §b%s§r"
---[==[ L["DialogResetConfigText"] = [=[§cWARNING!§r
-Resetting GuildTithe's settings can't be undone.
+L["ChatArgNotFound"] = "§b\"%s\"§r — недопустимый аргумент для команды §b\"%s\"§r."
+L["ChatAutoDepositDisabled"] = "Автоматические взносы отключены."
+L["ChatCommandNotFound"] = "§b\"%s\"§r — команда не найдена. §b/gt help§r — список команд."
+L["ChatDepositTitheAmount"] = "Автоматически внесено %s."
+L["ChatHelpLine1"] = "=== Версия §b%s§r — Справка ==="
+L["ChatHelpLine2"] = "Аргументы в скобках — необязательные. Команды через слеш взаимозаменяемы."
+L["ChatHelpLine3"] = "options / config — открыть окно настроек"
+L["ChatHelpLine4"] = "reset (tithe) — сбросить текущий взнос"
+L["ChatHelpLine5"] = "reset pos — сбросить положение мини-окна"
+L["ChatHelpLine6"] = "reset config — сбросить настройки этого персонажа"
+L["ChatHelpLine7"] = "current / tithe — показать текущую задолженность по взносу"
+L["ChatHelpLine8"] = "mini — включить/выключить мини-окно"
+L["ChatHelpLine9"] = "mini lock — заблокировать/разблокировать мини-окно"
+L["ChatHelpLine10"] = "total — показать общую сумму внесённых взносов"
+L["ChatMiniFrameLock"]   = "Мини-окно заблокировано."
+L["ChatMiniFrameUnlock"] = "Мини-окно разблокировано."
+L["ChatNotEnoughFunds"]      = "У вас недостаточно денег!"
+L["ChatNothingToDeposit"]    = "Нечего вносить!"
+L["ChatNoValidDeposits"]     = "Нет открытых окон для внесения взноса!"
+L["ChatOutstandingTithe"]    = "Текущий взнос — %s"
+L["ChatSpammyCollectedAmount"]    = "%s собрано с §b%s§r"
+L["ChatSpammyNotCollectingSource"] = "Не собираю взносы с §b%s§r"
+L["DialogResetConfigText"] = [=[§cВНИМАНИЕ!§r
+Сброс настроек GuildTithe необратим.
 
-Are you sure?]=] ]==]
--- L["DialogResetTitheText"] = "Are you sure you want to reset your current tithe?"
--- L["DialogSkinRequiresReload"] = "Enabling or disabling this feature requires you to reload your User Interface to see the changes."
--- L["Loaded"] = "Guild Tithe version §b%s§r loaded. §b/gt help§r shows command help."
--- L["MiniFrameCurrentTitheText"] = "Current Tithe:"
--- L["OptionsAutoDeposit"] = "Automatically deposit collected tithe"
--- L["OptionsDebug"] = "Debug Mode"
--- L["OptionsElvSkin"] = "Enable ElvUI Skin"
--- L["OptionsExtra2Text"] = "Extra configuration options"
--- L["OptionsExtraText"] = "Allow collection from..."
--- L["OptionsLootText"] = "Looted money"
--- L["OptionsMailText"] = "Mail"
--- L["OptionsMerchantText"] = "Merchants"
--- L["OptionsQuestText"] = "Quest Rewards"
--- L["OptionsSpammy"] = "Output to chat"
--- L["OptionsTitle"] = "GuildTithe Options"
--- L["OptionsTotalTitheText"] = "Grand Total - %s"
--- L["OptionsTradeText"] = "Trade"
--- L["OptionsVersionText"] = "%s"
--- L["TooltipLDBDescriptionCurrent"] = "This is your current tithe."
--- L["TooltipLDBDescriptionTotal"] = "This is your total tithe."
+Вы уверены?]=]
+L["DialogResetTitheText"] = "Вы уверены, что хотите сбросить текущий взнос?"
+L["DialogSkinRequiresReload"] = "Включение или отключение этой функции требует перезагрузки интерфейса (/reload), чтобы изменения вступили в силу."
+L["Loaded"] = "Аддон Guild Tithe версии §b%s§r загружен. §b/gt help§r — справка по командам."
+L["MiniFrameCurrentTitheText"] = "Текущий взнос:"
+L["OptionsAutoDeposit"] = "Автоматически вносить собранный взнос"
+L["OptionsDebug"] = "Режим отладки"
+L["OptionsElvSkin"] = "Включить скин ElvUI"
+L["OptionsExtra2Text"] = "Дополнительные настройки"
+L["OptionsExtraText"] = "Разрешить сбор взносов из..."
+L["OptionsLootText"] = "Добыча (лут)"
+L["OptionsMailText"] = "Почта"
+L["OptionsMerchantText"] = "Торговцы"
+L["OptionsQuestText"] = "Награды за квесты"
+L["OptionsSpammy"] = "Выводить в чат"
+L["OptionsTitle"] = "Настройки GuildTithe"
+L["OptionsTotalTitheText"] = "Общая сумма — %s"
+L["OptionsTradeText"] = "Обмен"
+L["OptionsVersionText"] = "%s"
+L["TooltipLDBDescriptionCurrent"] = "Это ваш текущий взнос."
+L["TooltipLDBDescriptionTotal"] = "Это ваша общая сумма взносов."
 
 	return L
 end
