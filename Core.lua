@@ -35,7 +35,7 @@ function E:debugArgs(...)
 	for i = 1, select("#", ...) do
 		tmp[i] = tostring(select(i, ...)) or "nil"
 	end
-	return table.concat(tmp, ", ")
+	if not IsSecretValue(table) then return table.concat(tmp, ", ") else return nil end
 end
 
 -- Get a string for the current version of the addon.
