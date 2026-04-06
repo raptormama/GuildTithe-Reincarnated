@@ -1,7 +1,7 @@
 --[[
 ------------------------------------------------------------------------
 	Project: GuildTithe Reincarnated
-	File: Core rev. 140
+	File: Core rev. 141
 	Date: 2024-01-10T02:30Z
 	Purpose: Core Addon Code
 	Credits: Code written by Vandesdelca32, updated for Dragonflight by Miragosa
@@ -35,12 +35,16 @@ function E:debugArgs(...)
 	for i = 1, select("#", ...) do
 		tmp[i] = tostring(select(i, ...)) or "nil"
 	end
-	if canaccessvalue(tmp) then return table.concat(tmp, ", ") else return nil end
+	if canaccessvalue(tmp) and not issecretvalue(tmp) then
+		return table.concat(tmp, ", ")
+	else
+		return nil
+	end
 end
 
 -- Get a string for the current version of the addon.
 function E:GetVerString()
-	CURRENT_REVISION = 140
+	CURRENT_REVISION = 141
 	local v, rev = (C_AddOns.GetAddOnMetadata(addonName, "VERSION") or "???"), CURRENT_REVISION
 
 	--[===[@debug@
