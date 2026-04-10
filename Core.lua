@@ -1,7 +1,7 @@
 --[[
 ------------------------------------------------------------------------
 	Project: GuildTithe Reincarnated
-	File: Core rev. 142
+	File: Core rev. 143
 	Date: 2024-01-10T02:30Z
 	Purpose: Core Addon Code
 	Credits: Code written by Vandesdelca32, updated for Dragonflight by Miragosa
@@ -32,19 +32,22 @@ local GOLD_CAP = (9999999 * COPPER_PER_GOLD) + (99 * COPPER_PER_SILVER) + 99
 -- debugArgs: Returns literal "nil" or the tostring of all of the arguments passed to it.
 function E:debugArgs(...)
 	local tmp = {}
-	for i = 1, select("#", ...) do
-		tmp[i] = tostring(select(i, ...)) or "nil"
-	end
-	if canaccessvalue(tmp) and not issecretvalue(tmp) then
-		return table.concat(tmp, ", ")
+	if not InCombatLockdown() and not IsInInstance() and canaccessvalue(tmp) and not issecrettable(tmp) then
+		for i = 1, select("#", ...) do
+			if not issecretvalue(tmp[i]) then
+				tmp[i] = tostring(select(i, ...)) or "nil"
+			end
+		end
+		return table.concat(tmp, ", ") or "nil"
 	else
-		return nil
+		self:PrintDebug("A secret error caused an issue with debug messaging.")
+		return "nil"
 	end
 end
 
 -- Get a string for the current version of the addon.
 function E:GetVerString()
-	CURRENT_REVISION = 142
+	CURRENT_REVISION = 143
 	local v, rev = (C_AddOns.GetAddOnMetadata(addonName, "VERSION") or "???"), CURRENT_REVISION
 
 	--[===[@debug@

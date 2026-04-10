@@ -1,5 +1,5 @@
 ## Author: Miragosa
-## Interface: 100207, 110000, 110002, 11005, 11007, 110100, 110105, 110107, 110200, 110205, 110207, 120000, 120001
+## Interface: 100207, 110000, 110002, 11005, 11007, 110100, 110105, 110107, 110200, 110205, 110207, 120000, 120001, 120005
 ## Notes: Implements a guild bank tithe, allowing you to auto-deposit a percentage of your income (from various sources) into the guild bank. Originally written by botono9, this version contains much-needed code updates. Updated for Dragonflight (and later) by Miragosa.
 ## SavedVariablesPerCharacter: GuildTithe_SavedDB
 ## Title: GuildTithe Reincarnated
