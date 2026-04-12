@@ -47,7 +47,7 @@ end
 
 -- Get a string for the current version of the addon.
 function E:GetVerString()
-	CURRENT_REVISION = 143
+	CURRENT_REVISION = 144
 	local v, rev = (C_AddOns.GetAddOnMetadata(addonName, "VERSION") or "???"), CURRENT_REVISION
 
 	--[===[@debug@
@@ -259,9 +259,16 @@ function E:UpdateOutstandingTithe(source, update, ...)
 	if source == "Loot" or source == "Quest" then
 		local arg1 = ...
 		--Try and parse the current amount from the string.
-		local g = tonumber(arg1:match("(%d+)%s" .. GOLD)) or 0
-		local s = tonumber(arg1:match("(%d+)%s" .. SILVER)) or 0
-		local c = tonumber(arg1:match("(%d+)%s" .. COPPER)) or 0
+		local g, s, c
+		if not InCombatLockdown() then
+			g = tonumber(arg1:match("(%d+)%s" .. GOLD)) or 0
+			s = tonumber(arg1:match("(%d+)%s" .. SILVER)) or 0
+		    c = tonumber(arg1:match("(%d+)%s" .. COPPER)) or 0
+		else
+			g = 0 --Unfortunately, in combat lockdown we have to be wary of taint.
+			s = 0 --This should only affect attempts to loot during boss encounters.
+			c = 0
+		end
 
 		titheAmount = (g * COPPER_PER_GOLD) + (s * SILVER_PER_GOLD) + c
 
