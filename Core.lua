@@ -1,7 +1,7 @@
 --[[
 ------------------------------------------------------------------------
 	Project: GuildTithe Reincarnated
-	File: Core rev. 144
+	File: Core rev. 145
 	Date: 2024-01-10T02:30Z
 	Purpose: Core Addon Code
 	Credits: Code written by Vandesdelca32, updated for Dragonflight by Miragosa
@@ -47,7 +47,7 @@ end
 
 -- Get a string for the current version of the addon.
 function E:GetVerString()
-	CURRENT_REVISION = 144
+	CURRENT_REVISION = 145
 	local v, rev = (C_AddOns.GetAddOnMetadata(addonName, "VERSION") or "???"), CURRENT_REVISION
 
 	--[===[@debug@
@@ -66,6 +66,15 @@ function E:GetVerString()
 		end
 	end
 	return v .. "." .. rev
+end
+
+function SecretsActive()
+	for i=0,4,1 do
+		if C_RestrictedActions.IsAddOnRestrictionActive(i) then
+			return true
+		end
+	end
+	return false
 end
 
 local SettingsDefaults = {
@@ -260,7 +269,7 @@ function E:UpdateOutstandingTithe(source, update, ...)
 		local arg1 = ...
 		--Try and parse the current amount from the string.
 		local g, s, c
-		if not InCombatLockdown() then
+		if not SecretsActive() then
 			g = tonumber(arg1:match("(%d+)%s" .. GOLD)) or 0
 			s = tonumber(arg1:match("(%d+)%s" .. SILVER)) or 0
 		    c = tonumber(arg1:match("(%d+)%s" .. COPPER)) or 0
