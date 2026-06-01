@@ -732,6 +732,11 @@ function GuildTithe_OnLoad(self)
 	self:RegisterEvent("PLAYER_LEAVING_WORLD") -- For saving options when we log and the form is closed.
 	self:RegisterEvent("PLAYER_ENTERING_WORLD") -- For updating the frames and output.
 
+	-- Establish database
+	if not GuildTithe_SavedDB or GuildTithe_SavedDB.SettingsVer < SettingsDefaults.SettingsVer then
+		GuildTithe_SavedDB = SettingsDefaults
+	end
+
 	self:SetScript("OnEvent", E.EventHandler)
 
 	-- Register /commands
@@ -752,10 +757,6 @@ function E.EventHandler(self, event, ...)
 		return E:Init()
 
 	elseif event == "PLAYER_ENTERING_WORLD" then
-		-- Establish database
-		if not GuildTithe_SavedDB or GuildTithe_SavedDB.SettingsVer < SettingsDefaults.SettingsVer then
-			GuildTithe_SavedDB = SettingsDefaults
-		end
 
 		if not E.Loaded then
 			E:PrintMessage(format(L.Loaded, E:GetVerString()))
