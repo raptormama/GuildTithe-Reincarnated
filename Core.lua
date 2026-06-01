@@ -1,7 +1,7 @@
 --[[
 ------------------------------------------------------------------------
 	Project: GuildTithe Reincarnated
-	File: Core rev. 149
+	File: Core rev. 150
 	Date: 2024-01-10T02:30Z
 	Purpose: Core Addon Code
 	Credits: Code written by Vandesdelca32, updated for Dragonflight by Miragosa
@@ -134,7 +134,7 @@ end
 
 -- Get a string for the current version of the addon.
 function E:GetVerString()
-	CURRENT_REVISION = 149
+	CURRENT_REVISION = 150
 	local v, rev = (C_AddOns.GetAddOnMetadata(addonName, "VERSION") or "???"), CURRENT_REVISION
 	
 	if short then
@@ -252,11 +252,6 @@ function E:Init()
 
 	E.Info.LDBData = LibStub:GetLibrary("LibDataBroker-1.1"):NewDataObject("GuildTithe", t)
 
-	-- Check the settings:
-	if not GuildTithe_SavedDB or GuildTithe_SavedDB.SettingsVer < SettingsDefaults.SettingsVer then
-		GuildTithe_SavedDB = SettingsDefaults
-	end
-
 	-- Initialise GUI display track for new GUI
 	if GuildTithe_SavedDB.GUIIsShown == nil then GuildTithe_SavedDB.GUIIsShown = false end
 
@@ -309,24 +304,24 @@ function E:Init()
 	LDB = LibStub("LibDataBroker-1.1", true)
 	LDBIcon = LDB and LibStub("LibDBIcon-1.0", true)
 	if LDB then
-	local GTIcon = LDB:NewDataObject("GuildTitheMinimapButton", {
-	type = "launcher",
-		text = "GuildTithe",
-		icon = "Interface\\ICONS\\inv_misc_coin_17.blp",
-		OnClick = function(_, button)
-				if button == "LeftButton" then
-					if GuildTithe_SavedDB.GUIIsShown then
-						GuildTithe_SavedDB.GUIIsShown = false
-                		AceGUI:Release(GuildTitheReincarnated.GTSettingsFrame)
-					else
-						GuildTitheReincarnated.DrawMainUIFrame()
+		local GTIcon = LDB:NewDataObject("GuildTitheMinimapButton", {
+		type = "launcher",
+			text = "GuildTithe",
+			icon = "Interface\\ICONS\\inv_misc_coin_17.blp",
+			OnClick = function(_, button)
+					if button == "LeftButton" then
+						if GuildTithe_SavedDB.GUIIsShown then
+							GuildTithe_SavedDB.GUIIsShown = false
+							AceGUI:Release(GuildTitheReincarnated.GTSettingsFrame)
+						else
+							GuildTitheReincarnated.DrawMainUIFrame()
+						end
 					end
-				end
-			end,
-			OnTooltipShow = function(tooltip)
-				DrawTooltip(tooltip)
-			end,
-		})
+				end,
+				OnTooltipShow = function(tooltip)
+					DrawTooltip(tooltip)
+				end,
+			})
 		if LDBIcon then
 			LDBIcon:Register("GuildTitheMinimapButton", GTIcon, GuildTithe_SavedDB.MinimapButtonInfo)
 		end
@@ -757,6 +752,11 @@ function E.EventHandler(self, event, ...)
 		return E:Init()
 
 	elseif event == "PLAYER_ENTERING_WORLD" then
+		-- Establish database
+		if not GuildTithe_SavedDB or GuildTithe_SavedDB.SettingsVer < SettingsDefaults.SettingsVer then
+			GuildTithe_SavedDB = SettingsDefaults
+		end
+
 		if not E.Loaded then
 			E:PrintMessage(format(L.Loaded, E:GetVerString()))
 			-- Execute minimap icon display check so user choice persists across UI loads.
